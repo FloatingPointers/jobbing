@@ -4,8 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./pages/Main";
 import Landing from "./pages/Landing";
 import Navbar from "./components/Navbar";
-import Login from "./pages/Login";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import Login from "./pages/Login";
 
 function App() {
   return (

@@ -1,16 +1,29 @@
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+
 import React from "react";
-import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 
 export default function Login() {
   const googleLogin = useGoogleLogin({
     flow: "auth-code",
     onSuccess: async (codeResponse) => {
+      if (codeResponse.code === undefined) {
+        console.log("ERROR", codeResponse);
+        return;
+      }
       console.log(codeResponse);
-      const tokens = await axios.post("http://localhost:3001/auth/google", {
-        code: codeResponse.code,
-      });
+      const tokens = await axios.post(
+        "http://localhost:8000/auth/google",
+        {
+          code: codeResponse.code,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      );
 
       console.log(tokens);
     },
