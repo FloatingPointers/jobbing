@@ -11,7 +11,7 @@ function App() {
   return (
     <GoogleOAuthProvider
       clientId={
-        "224832934072-igamf2ggcd44jvsv274782h7jqecfjf7.apps.googleusercontent.com"
+        "224832934072-6eia0vmlb6d1c6sav6csv9pjn5og57pt.apps.googleusercontent.com"
       }
     >
       <BrowserRouter>

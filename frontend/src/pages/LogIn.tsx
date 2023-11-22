@@ -23,7 +23,7 @@ export default function Login() {
           <script src="https://accounts.google.com/gsi/client" async></script>
           <div
             id="g_id_onload"
-            data-client_id="224832934072-igamf2ggcd44jvsv274782h7jqecfjf7.apps.googleusercontent.com"
+            data-client_id="224832934072-6eia0vmlb6d1c6sav6csv9pjn5og57pt.apps.googleusercontent.com"
             data-login_uri="http://localhost:8000/login"
             data-auto_prompt="false"
             data-auto_select="true"

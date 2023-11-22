@@ -58,10 +58,3 @@ def google_auth():
     resp.set_cookie('g_csrf_token', g_csrf_token, httponly=False, secure=True, samesite='None')
     
     return resp
-                    
-
-    
-    
-    return flask.redirect("http://localhost:3000/login")
-
-
