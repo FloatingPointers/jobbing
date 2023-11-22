@@ -9,7 +9,7 @@ export default function Landing() {
         </a>
         <ul>
           <li>
-            <button>Log In</button>
+            <a href="/login">Log In</a>
           </li>
         </ul>
       </div>
@@ -20,12 +20,14 @@ export default function Landing() {
         <h2 className="text--6xl px-2">
           Instant job application updates with Gmail integration
         </h2>
-        <button
-          type="button"
-          className="bg-indigo-600 text-3xl border-indigo-500 border-1 rounded-xl font-bold text-gray-200 px-8 py-4 mt-12 hover:bg-indigo-500 active:bg-indigo-700 transition-colors"
-        >
-          Get Started
-        </button>
+        <a href="/login">
+          <button
+            type="button"
+            className="bg-indigo-600 text-3xl border-indigo-500 border-1 rounded-xl font-bold text-gray-200 px-8 py-4 mt-12 hover:bg-indigo-500 active:bg-indigo-700 transition-colors"
+          >
+            Get Started
+          </button>
+        </a>
       </div>
       <div className="h-28"></div>
     </div>

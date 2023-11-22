@@ -34,6 +34,7 @@ def google_auth():
     idinfo = id_token.verify_oauth2_token(enc_creds, requests.Request(), os.getenv("CLIENT_ID"))
     
     # ID token is valid. Get the user's Google Account ID from the decoded token
+    print(idinfo)
     userid = idinfo['sub']
     email = idinfo.get('email')
     name = idinfo.get('name')
