@@ -51,11 +51,11 @@ def google_auth():
     user_id = info.get('id')
     email = info.get('email')
     name = info.get('name')
-        
+    
     # Check if user exists in database
-    user = User.query.filter_by(email=email).first()
+    user = User.query.filter_by(id=user_id).first()
     if not user:
-        user = User(id=user_id, email=email, name=name)
+        user = User(id=user_id, email=email, name=name, token=credentials.token, refresh_token=credentials.refresh_token)
         db.session.add(user)
         db.session.commit()
     

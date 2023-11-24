@@ -6,4 +6,6 @@ class User(db.Model):
     id: Mapped[str] = mapped_column(String(255), primary_key=True)
     name: Mapped[str] = mapped_column(String(255), nullable=False) 
     email: Mapped[str] = mapped_column(String(255))
+    token: Mapped[str] = mapped_column(String(255))
+    refresh_token: Mapped[str] = mapped_column(String(255))
     
