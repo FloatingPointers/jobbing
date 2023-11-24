@@ -1,9 +1,10 @@
 import os
 
 from dotenv import load_dotenv
+import jwt
 
-from backend.jobbing.models.user import User
-from backend.jobbing.utils.constants import SCOPES, TOKEN_URI
+from jobbing.models.user import User
+from jobbing.utils.constants import API_OAUTH, API_OAUTH_VERSION, SCOPES, TOKEN_URI
 load_dotenv()
 
 def get_credentials(id: str):
@@ -28,7 +29,10 @@ def get_user_info(id: str):
     from google.oauth2.credentials import Credentials
     from googleapiclient.discovery import build
     credentials = Credentials(**credentials)
-    with build('oauth2', 'v2', credentials=credentials) as service:
+    with build(API_OAUTH, API_OAUTH_VERSION, credentials=credentials) as service:
         info = service.userinfo().get().execute()
     
     return info
+
+def get_id(jwt_token: str):
+    return jwt.decode(jwt_token, os.getenv("SECRET_KEY").encode('utf-8'), algorithms=["HS256"]).get('id')

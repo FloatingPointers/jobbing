@@ -26,5 +26,9 @@ def addUser():
     else:
         return 'Kaboom'
 
+@app.route('/get_user_info/<id>', methods=['GET'])
+def get_user_info(id):
+    user = User.query.filter_by(id=id).first()
+    return jsonify({'picture': user.picture, 'given_name': user.given_name})
 
     

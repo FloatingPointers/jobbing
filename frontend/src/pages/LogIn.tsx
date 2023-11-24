@@ -24,43 +24,7 @@ export default function Login() {
       <div className="w-full text-center text-gray-700 flex flex-col justify-center items-center ">
         <div className="border border-white  rounded-lg p-8 bg-white">
           <h1 className="text-2xl font-bold mb-4">Give us all your money</h1>
-          {/* <button
-            className="border border-black p-2 rounded-lg bg-slate-200 text-black "
-            onClick={googleLogin}
-          >
-            Login with Google
-          </button> */}
           <button onClick={login}>Sign in with Google 🚀</button>
-          {/* <div THIS WORKS FOR LOGIN ONLY
-            id="g_id_onload"
-            data-client_id="224832934072-6eia0vmlb6d1c6sav6csv9pjn5og57pt.apps.googleusercontent.com"
-            data-login_uri="http://localhost:8000/login"
-            data-auto_prompt="false"
-            data-auto_select="true"
-          ></div>
-
-          <div
-            className="g_id_signin"
-            data-type="standard"
-            data-size="large"
-            data-theme="outline"
-            data-text="sign_in_with"
-            data-shape="rectangular"
-            data-logo_alignment="left"
-          ></div> */}
-          {/* <GoogleLogin
-            flow="authCode"
-            onSuccess={(credentialResponse) => {
-              console.log(credentialResponse);
-              if (typeof credentialResponse.credential === "string") {
-                const decoded = jwtDecode(credentialResponse.credential);
-                console.log(decoded);
-              }
-            }}
-            onError={() => {
-              console.log("Login Failed");
-            }}
-          /> */}
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import base64
 import token
 from flask import Flask, make_response, redirect, request, jsonify, abort, session
 import google_auth_oauthlib
+from jobbing.utils.constants import API_OAUTH, API_OAUTH_VERSION
 from jobbing import app, db
 from jobbing.models.user import User
 import flask
@@ -44,7 +45,7 @@ def google_auth():
     print(credentials)
     
     info = None
-    with build('oauth2', 'v2', credentials=credentials) as service:
+    with build(API_OAUTH, API_OAUTH_VERSION, credentials=credentials) as service:
         info = service.userinfo().get().execute()
     
     # ID token is valid. Get the user's Google Account ID from the decoded token
@@ -55,7 +56,14 @@ def google_auth():
     # Check if user exists in database
     user = User.query.filter_by(id=user_id).first()
     if not user:
-        user = User(id=user_id, email=email, name=name, token=credentials.token, refresh_token=credentials.refresh_token)
+        user = User(id=user_id,
+                    email=email,
+                    name=name,
+                    given_name=info.get('given_name'),
+                    token=credentials.token,
+                    refresh_token=credentials.refresh_token,
+                    picture=info.get('picture'),
+                    )
         db.session.add(user)
         db.session.commit()
     
@@ -63,7 +71,7 @@ def google_auth():
     jwt_token = jwt.encode({"id": user.id}, os.getenv("SECRET_KEY").encode('utf-8'), algorithm="HS256")
     
     # Set JWT token in cookie
-    resp = make_response(redirect('http://localhost:3000/'))
+    resp = make_response(redirect('http://localhost:3000/jobbing'))
     resp.set_cookie('jwt_token', jwt_token, httponly=True, secure=True, samesite='None')
-    
     return resp
+

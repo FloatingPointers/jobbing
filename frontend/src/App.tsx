@@ -6,7 +6,6 @@ import Landing from "./pages/Landing";
 import Navbar from "./components/Navbar";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Login from "./pages/Login";
-import Success from "./pages/success";
 
 function App() {
   return (
@@ -19,7 +18,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/login/success" element={<Success />} />
           <Route path="/jobbing/" element={<Navbar />}>
             <Route index element={<Main />} />
           </Route>
