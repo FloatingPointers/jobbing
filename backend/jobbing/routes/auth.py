@@ -31,7 +31,7 @@ def google_auth():
         scopes=data['scope'],
         state=data['state'],
         )
-    flow.redirect_uri = flask.url_for('login', _external=True)
+    flow.redirect_uri = flask.url_for('google_auth', _external=True)
 
     authorization_response = flask.request.url
     flow.fetch_token(authorization_response=authorization_response)
