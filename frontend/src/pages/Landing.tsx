@@ -1,6 +1,16 @@
 import React from "react";
 
 export default function Landing() {
+  fetch("http://localhost:8000/test", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => console.log("Error:", error));
   return (
     <div className="grid grid-cols-[1fr] grid-rows-[auto_1fr_auto] min-h-screen bg-gradient-to-b from-indigo-100 from-5% via-indigo-200 via-25% to-indigo-400 to-90%">
       <div className="navber">

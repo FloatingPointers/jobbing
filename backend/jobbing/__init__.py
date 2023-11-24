@@ -11,7 +11,7 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, supports_credentials=True, origins=["http://localhost:3000"])
 app.secret_key = os.getenv("SECRET_KEY").encode('utf-8')
 app.config.from_object('jobbing.config')
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:admin@127.0.0.1:3306/jobbing"
